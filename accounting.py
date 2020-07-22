@@ -63,25 +63,22 @@
 #           )
 
 #kate's code
+melon_cost = 1.00
 
 def underpaid_customers():
     filename = ("customer-orders.txt")
     file = open(filename, "r")
     for line in file:
         list = line.strip().split("|")
-        print(list)
-        cust_num = list[0]
         cust_name = list[1]
-        melon_order = list[2]
-        melon_total = list[3]
+        melon_count = list[2]
+        cust_paid = list[3]
 
-#         cust_count = 1
-#         customer_expected = melon_order * melon_total
-# # if customer1_expected != customer1_paid:
-# #     print(f"{customer1_name} paid ${customer1_paid:.2f},",
-# #           f"expected ${customer1_expected:.2f}"
-#         # increment the customer count by one
-#         cust_count += 1
-#     file.close()
+        cust_expected_cost = float(melon_count) * float(melon_cost)
+        cust_expected_cost = '${:,.2f}'.format(cust_expected_cost)
+        if cust_expected_cost != cust_paid:
+            print(f"{cust_name} paid ${cust_paid}, expected {cust_expected_cost}")
+
+    file.close()
 
 underpaid_customers()
