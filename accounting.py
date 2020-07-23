@@ -72,12 +72,14 @@ def underpaid_customers():
         list = line.strip().split("|")
         cust_name = list[1]
         melon_count = list[2]
-        cust_paid = list[3]
+        cust_paid = float(list[3])
+        cust_paid = '${:,.2f}'.format(cust_paid)
 
+        cust_count = 1
         cust_expected_cost = float(melon_count) * float(melon_cost)
         cust_expected_cost = '${:,.2f}'.format(cust_expected_cost)
         if cust_expected_cost != cust_paid:
-            print(f"{cust_name} paid ${cust_paid}, expected {cust_expected_cost}")
+            print(f"{cust_name} paid {cust_paid}, expected {cust_expected_cost}")
 
     file.close()
 
